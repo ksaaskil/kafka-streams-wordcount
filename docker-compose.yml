@@ -24,5 +24,7 @@ services:
       - zookeeper
     volumes:
       - kafka:/kafka
+    ports:
+      - 9092:9092
 volumes:
   kafka: {}
