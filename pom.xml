@@ -53,7 +53,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.github.simplesteph.udemy.kafka.streams.WordCountApp</mainClass>
+                            <mainClass>org.example.StreamsStarterApp</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
