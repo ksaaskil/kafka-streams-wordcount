@@ -26,6 +26,28 @@ $ kafkacat -b localhost:9092 -s key=s -s value=q -f 'Key: %k, value: %s\n' -t w
 
 The value is decoded as 64-bit signed integer by setting `-s value=q`. Use `kafkacat -h` to see all deserializer options.
 
+## View metadata
+
+View topics and partitions:
+
+```bash
+$ kafkacat -L -b localhost:9092
+```
+
+Kafka creates internal topics per stream application ID for changelogs as well as repartitions. The former is used for storing aggregated data and the latter for managing transformations of keys.
+
+Consume the `KTable` changelog:
+
+```bash
+$ kafkacat -b localhost:9092 -s key=s -s value=q '-f Key: %k, value: %s\n' -t word-counts-Counts-changelog
+```
+
+Consume the repartitions:
+
+```bash
+$ kafkacat -b localhost:9092 -s key=s -s value=s '-f Key: %k, value: %s\n' -t word-counts-Counts-repartition
+```
+
 ## Packaging and running as stand-alone JAR
 
 ```bash
